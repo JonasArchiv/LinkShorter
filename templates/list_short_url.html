@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Short URLs</title>
+</head>
+<body>
+    <h1>List of Short URLs</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Original URL</th>
+            <th>Short URL</th>
+            <th>Is Active</th>
+            <th>Edit</th>
+        </tr>
+        {% for link in links %}
+        <tr>
+            <td>{{ link.id }}</td>
+            <td>{{ link.original_url }}</td>
+            <td>{{ link.custom_short }}</td>
+            <td>{{ link.is_active }}</td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="id" value="{{ link.id }}">
+                    <label for="url">Original URL:</label><br>
+                    <input type="text" id="url" name="url" value="{{ link.original_url }}"><br>
+                    <label for="short">Short URL:</label><br>
+                    <input type="text" id="short" name="short" value="{{ link.custom_short }}"><br>
+                    <label for="is_active">Is Active:</label><br>
+                    <input type="checkbox" id="is_active" name="is_active" {% if link.is_active %}checked{% endif %}><br>
+                    <input type="submit" value="Update">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

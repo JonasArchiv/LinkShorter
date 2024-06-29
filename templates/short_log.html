@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Logs</title>
+</head>
+<body>
+    <h1>Access Logs</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>IP Address</th>
+            <th>Accessed Link</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.id }}</td>
+            <td>{{ log.ip_address }}</td>
+            <td>{{ log.accessed_link }}</td>
+            <td>{{ log.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
